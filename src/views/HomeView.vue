@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+    import ReactorStatusCard from '@/components/home/reactor-status-card.vue';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <div class="home-view">
+        <reactor-status-card />
+    </div>
 </template>
