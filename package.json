@@ -11,18 +11,26 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@internationalized/date": "^3.5.5",
     "@nuxt/eslint": "^0.5.7",
     "@nuxt/test-utils": "^3.14.2",
     "@nuxtjs/color-mode": "^3.4.4",
-    "@nuxtjs/tailwindcss": "^6.12.1",
     "@pinia/nuxt": "^0.5.4",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.439.0",
     "nuxt": "^3.13.0",
     "pinia-plugin-persistedstate": "^4.0.1",
+    "radix-vue": "^1.9.5",
+    "shadcn-nuxt": "^0.10.4",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.5.7",
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "eslint": "^9.10.0",
     "typescript": "^5.6.2"
   }

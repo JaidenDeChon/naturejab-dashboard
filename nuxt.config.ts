@@ -9,8 +9,11 @@ export default defineNuxtConfig({
         '@nuxt/test-utils',
         '@nuxt/eslint',
         '@nuxtjs/color-mode',
+        'shadcn-nuxt',
     ],
     colorMode: {
         classSuffix: '',
+        preference: 'system',
+        fallback: 'light',
     },
 });
