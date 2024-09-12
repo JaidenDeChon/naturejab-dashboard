@@ -8,5 +8,9 @@ export default defineNuxtConfig({
         'pinia-plugin-persistedstate',
         '@nuxt/test-utils',
         '@nuxt/eslint',
+        '@nuxtjs/color-mode',
     ],
+    colorMode: {
+        classSuffix: '',
+    },
 });

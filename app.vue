@@ -6,5 +6,6 @@ useAppConfig();
     <div>
         <NuxtRouteAnnouncer />
         <NuxtWelcome />
+        <p>color mode: {{ $colorMode.value }}</p>
     </div>
 </template>
