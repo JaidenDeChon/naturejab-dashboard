@@ -7,9 +7,11 @@
     "dev": "nuxt dev -o --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint"
   },
   "dependencies": {
+    "@nuxt/eslint": "^0.5.7",
     "@nuxt/test-utils": "^3.14.2",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@pinia/nuxt": "^0.5.4",
@@ -17,5 +19,10 @@
     "pinia-plugin-persistedstate": "^4.0.1",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.5.7",
+    "eslint": "^9.10.0",
+    "typescript": "^5.6.2"
   }
 }
