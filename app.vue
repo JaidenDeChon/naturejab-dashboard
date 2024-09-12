@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { type Ref, ref } from 'vue';
-import { type DateValue, getLocalTimeZone, today } from '@internationalized/date';
-import { Calendar } from '@/components/ui/calendar';
-
-const value = ref(today(getLocalTimeZone())) as Ref<DateValue>;
-
 useAppConfig();
 </script>
 
 <template>
-    <div class="w-72">
-        <Calendar
-            v-model="value"
-            :weekday-format="'short'"
-            class="rounded-md border"
-        />
+    <div class="h-screen p-6 dark:bg-slate-800 text-slate-50">
+        <h1 class="text-4xl">
+            NatureJab
+        </h1>
+
+        <br>
+
+        <h2 class="text-xl">
+            Vacuum Pyrolysis Reactor Dashboard
+        </h2>
     </div>
 </template>
