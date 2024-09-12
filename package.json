@@ -13,6 +13,7 @@
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@pinia/nuxt": "^0.5.4",
     "nuxt": "^3.13.0",
+    "pinia-plugin-persistedstate": "^4.0.1",
     "vue": "latest",
     "vue-router": "latest"
   }
