@@ -6,8 +6,8 @@
   "tailwind": {
     "config": "tailwind.config.js",
     "css": "assets/css/tailwind.css",
-    "baseColor": "slate",
-    "cssVariables": false
+    "baseColor": "zinc",
+    "cssVariables": true
   },
   "framework": "nuxt",
   "aliases": {
