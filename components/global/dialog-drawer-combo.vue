@@ -73,6 +73,7 @@ const defaultDrawerClass = computed(() => {
             >
                 <component
                     :is="isDesktop ? DialogHeader : DrawerHeader"
+                    v-if="props.title || props.subtitle"
                     class="text-left"
                 >
                     <component :is="isDesktop ? DialogTitle : DrawerTitle">
@@ -90,7 +91,7 @@ const defaultDrawerClass = computed(() => {
 
                 <!-- Drawer footer slot (only for drawer mode) -->
                 <template v-if="!isDesktop">
-                    <DrawerFooter class="pt-2 w-full">
+                    <DrawerFooter class="pt-0 w-full">
                         <DrawerClose as-child>
                             <slot name="footer">
                                 <Button variant="outline">

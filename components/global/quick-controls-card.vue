@@ -23,12 +23,8 @@ function pickAugerStatusIcon(augerStatus: AugerStatusEnum): string {
 
 <template>
     <Card class="bg-muted">
-        <!-- Header. -->
-        <CardHeader>
-            <CardDescription>Quick controls</CardDescription>
-        </CardHeader>
         <!-- Body. -->
-        <CardContent>
+        <CardContent class="p-3">
             <div class="grid grid-cols-2 grid-rows-3 gap-3">
                 <!-- Emergency stop button. -->
                 <Button
@@ -37,7 +33,7 @@ function pickAugerStatusIcon(augerStatus: AugerStatusEnum): string {
                 >
                     <Icon
                         name="ic:round-power-settings-new"
-                        size="1.2rem"
+                        size="1rem"
                         class="mr-2"
                     />
                     EMERGENCY SHUTDOWN
@@ -47,7 +43,7 @@ function pickAugerStatusIcon(augerStatus: AugerStatusEnum): string {
                 <Button variant="destructive">
                     <Icon
                         name="ic:round-fire-extinguisher"
-                        size="1.2rem"
+                        size="1rem"
                         class="mr-2"
                     />
                     Flood inert gas
@@ -57,10 +53,10 @@ function pickAugerStatusIcon(augerStatus: AugerStatusEnum): string {
                 <Button variant="destructive">
                     <Icon
                         name="ic:outline-electric-bolt"
-                        size="1.2rem"
+                        size="1rem"
                         class="mr-2"
                     />
-                    Kill microwaves
+                    Kill magnetrons
                 </Button>
 
                 <!-- Barrel auger dropdown. -->
