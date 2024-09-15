@@ -1,5 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    app: {
+        head: {
+            title: 'NatureJab Dashboard',
+            meta: [
+                { name: 'theme-color', content: '#000000' },
+                { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+            ],
+        },
+    },
     compatibilityDate: '2024-04-03',
     devtools: { enabled: true },
     modules: [

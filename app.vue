@@ -5,7 +5,7 @@ useAppConfig();
 <template>
     <div
         vaul-drawer-wrapper
-        class="h-screen"
+        class="h-screen bg-background"
     >
         <header>
             <main-menu />
