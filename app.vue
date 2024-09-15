@@ -3,7 +3,7 @@ useAppConfig();
 </script>
 
 <template>
-    <div class="h-screen p-6 dark:bg-slate-800 text-slate-50">
+    <div class="h-screen p-6 bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-slate-50">
         <h1 class="text-4xl">
             NatureJab
         </h1>
