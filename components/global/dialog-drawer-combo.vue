@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router';
 import {
     Dialog,
     DialogTrigger,
@@ -15,19 +16,26 @@ import {
 } from '../ui';
 import { useMediaQuery } from '#imports';
 
+const props = withDefaults(
+    defineProps<{
+        title?: string;
+        subtitle?: string;
+        closeOnRouteChange?: boolean;
+    }>(),
+    {
+        closeOnRouteChange: true,
+    },
+);
+
+// Watch the router to close when the route changes.
 const isOpen = ref(false);
-const isDesktop = useMediaQuery('(min-width:  768px)');
-
-const windowWidth = ref(0);
-
-onMounted(() => {
-    if (import.meta.client) {
-        windowWidth.value = window.innerWidth;
-        window.addEventListener('resize', () => {
-            windowWidth.value = window.innerWidth;
-        });
-    }
+const route = useRoute();
+watch(() => route.fullPath, () => {
+    if (!props.closeOnRouteChange) return;
+    isOpen.value = false;
 });
+
+const isDesktop = useMediaQuery('(min-width:  768px)');
 
 const defaultDrawerClass = computed(() => {
     if (isDesktop.value) {
@@ -67,14 +75,12 @@ const defaultDrawerClass = computed(() => {
                     :is="isDesktop ? DialogHeader : DrawerHeader"
                     class="text-left"
                 >
-                    <slot name="header">
-                        <component :is="isDesktop ? DialogTitle : DrawerTitle">
-                            Modal Title
-                        </component>
-                        <component :is="isDesktop ? DialogDescription : DrawerDescription">
-                            Modal Description
-                        </component>
-                    </slot>
+                    <component :is="isDesktop ? DialogTitle : DrawerTitle">
+                        {{ props.title }}
+                    </component>
+                    <component :is="isDesktop ? DialogDescription : DrawerDescription">
+                        {{ props.subtitle }}
+                    </component>
                 </component>
 
                 <!-- Modal body content slot -->
@@ -84,11 +90,13 @@ const defaultDrawerClass = computed(() => {
 
                 <!-- Drawer footer slot (only for drawer mode) -->
                 <template v-if="!isDesktop">
-                    <DrawerFooter class="pt-2">
+                    <DrawerFooter class="pt-2 w-full">
                         <DrawerClose as-child>
-                            <Button variant="outline">
-                                Cancel
-                            </Button>
+                            <slot name="footer">
+                                <Button variant="outline">
+                                    Cancel
+                                </Button>
+                            </slot>
                         </DrawerClose>
                     </DrawerFooter>
                 </template>
