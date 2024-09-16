@@ -1,11 +1,16 @@
 <script setup lang="ts">
+import { useMainMenuDrawerStore } from '~/stores/main-menu-drawer-state';
+
+const mainMenuDrawerStore = useMainMenuDrawerStore();
 </script>
 
 <template>
-    <div class="border-b-2 border-b-border p-3 md:px-24 lg:px-36 xl:px-72">
+    <div class="border-b-2 border-border p-3 bg-background/40 backdrop-blur-lg md:px-24 lg:px-36 xl:px-72">
         <dialog-drawer-combo>
             <template #trigger>
-                <Button variant="ghost">
+                <Button
+                    variant="ghost"
+                >
                     <Icon
                         name="material-symbols:menu-rounded"
                         size="1.3em"
@@ -23,6 +28,7 @@
                     >
                         <NuxtLink
                             to="/"
+                            @click="mainMenuDrawerStore.closeMainMenuDrawer()"
                         >
                             <Icon
                                 name="ic:round-home"
@@ -41,6 +47,7 @@
                     >
                         <NuxtLink
                             to="/history"
+                            @click="mainMenuDrawerStore.closeMainMenuDrawer()"
                         >
                             <Icon
                                 name="ic:round-access-time-filled"
@@ -51,7 +58,10 @@
                         </NuxtLink>
                     </Button>
 
-                    <quick-controls-card class="my-9" />
+                    <quick-controls-card
+                        class="my-9"
+                        @close-main-menu-drawer="mainMenuDrawerStore.closeMainMenuDrawer()"
+                    />
                 </div>
             </template>
 

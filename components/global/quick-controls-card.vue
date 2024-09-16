@@ -1,9 +1,6 @@
 <script setup lang="ts">
-enum AugerStatusEnum {
-    FORWARD = 'forward',
-    REVERSE = 'reverse',
-    STOPPED = 'stopped',
-}
+import FireSuppressionButton from '~/components/reactor-controls/fire-suppression-button.vue';
+import { AugerStatusEnum } from '~/lib/constants/auger-status-enum';
 
 const augerOneStatus = ref<AugerStatusEnum>(AugerStatusEnum.FORWARD);
 const augerTwoStatus = ref<AugerStatusEnum>(AugerStatusEnum.STOPPED);
@@ -24,33 +21,34 @@ function pickAugerStatusIcon(augerStatus: AugerStatusEnum): string {
 <template>
     <Card class="bg-muted">
         <!-- Body. -->
-        <CardContent class="p-3">
-            <div class="grid grid-cols-2 grid-rows-3 gap-3">
+        <CardContent class="p-3 flex flex-col gap-6">
+            <!-- Critical controls. -->
+            <div class="grid grid-cols-2 grid-rows-4 gap-3">
                 <!-- Emergency stop button. -->
-                <Button
-                    class="col-span-2 row-span-1"
-                    variant="destructive"
-                >
+                <FireSuppressionButton />
+
+                <!-- Shutdown button. -->
+                <Button class="col-span-2">
                     <Icon
                         name="ic:round-power-settings-new"
                         size="1rem"
                         class="mr-2"
                     />
-                    EMERGENCY SHUTDOWN
+                    Shutdown
                 </Button>
 
-                <!-- Emergency stop button. -->
-                <Button variant="destructive">
+                <!-- Inert vacuum break button. -->
+                <Button>
                     <Icon
-                        name="ic:round-fire-extinguisher"
+                        name="ic:round-lens-blur"
                         size="1rem"
                         class="mr-2"
                     />
-                    Flood inert gas
+                    Inert vacuum break
                 </Button>
 
-                <!-- Emergency stop button. -->
-                <Button variant="destructive">
+                <!-- Kill magnetrons button. -->
+                <Button>
                     <Icon
                         name="ic:outline-electric-bolt"
                         size="1rem"

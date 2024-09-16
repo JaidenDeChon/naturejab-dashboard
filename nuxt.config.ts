@@ -7,6 +7,9 @@ export default defineNuxtConfig({
                 { name: 'theme-color', content: '#000000' },
                 { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
             ],
+            link: [
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            ],
         },
         pageTransition: {
             name: 'page',

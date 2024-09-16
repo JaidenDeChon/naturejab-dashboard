@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
 import {
     Dialog,
     DialogTrigger,
@@ -14,7 +13,10 @@ import {
     DrawerDescription,
     DrawerContent,
 } from '../ui';
+import { useMainMenuDrawerStore } from '~/stores/main-menu-drawer-state';
 import { useMediaQuery } from '#imports';
+
+const mainMenuDrawerStore = useMainMenuDrawerStore();
 
 const props = withDefaults(
     defineProps<{
@@ -26,14 +28,6 @@ const props = withDefaults(
         closeOnRouteChange: true,
     },
 );
-
-// Watch the router to close when the route changes.
-const isOpen = ref(false);
-const route = useRoute();
-watch(() => route.fullPath, () => {
-    if (!props.closeOnRouteChange) return;
-    isOpen.value = false;
-});
 
 const isDesktop = useMediaQuery('(min-width:  768px)');
 
@@ -54,7 +48,7 @@ const defaultDrawerClass = computed(() => {
     <client-only>
         <component
             :is="isDesktop ? Dialog : Drawer"
-            v-model:open="isOpen"
+            v-model:open="mainMenuDrawerStore.isOpen"
         >
             <component
                 :is="isDesktop ? DialogTrigger : DrawerTrigger"

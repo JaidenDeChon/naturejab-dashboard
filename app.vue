@@ -7,7 +7,7 @@ useAppConfig();
         vaul-drawer-wrapper
         class="h-screen bg-background"
     >
-        <header>
+        <header class="sticky">
             <main-menu />
         </header>
 
@@ -19,6 +19,7 @@ useAppConfig();
 .page-enter-active,
 .page-leave-active {
     transition: all 0.3s;
+    background-color: hsl(var(--muted) / 0.4);
 }
 .page-enter-from,
 .page-leave-to {
