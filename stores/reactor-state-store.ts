@@ -2,6 +2,12 @@ import { StoreNamesEnum } from '~/lib/constants/store-names-enum';
 import { AugerStatusEnum } from '~/lib/constants/auger-status-enum';
 import { ReactorOverallStatusEnum } from '~/lib/constants/reactor-overall-status-enum';
 import { getMagnetronDummyData } from '~/mocks/magnetron-dummy-data';
+import {
+    getSensorDummyData,
+    getTempSensorStreamDummyData,
+    getPressureSensorStreamDummyData,
+} from '~/mocks/sensor-dummy-data';
+import type { SensorData } from '~/lib/models/sensor-data';
 
 export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_STORE, () => {
     const _masterPowerStatus = ref<boolean>(false);
@@ -9,12 +15,18 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
     const _barrelAugerStatus = ref<AugerStatusEnum>(AugerStatusEnum.STOPPED);
     const _magnetronArrayPowerStatus = ref<boolean[]>(getMagnetronDummyData());
     const _reactorOverallStatus = ref<ReactorOverallStatusEnum>(ReactorOverallStatusEnum.NOT_RUNNING);
+    const _sensorsArrayReadings = ref<SensorData[]>(getSensorDummyData());
+    const _sensorReadingStreamTemperature = ref(getTempSensorStreamDummyData());
+    const _sensorReadingStreamPressure = ref(getPressureSensorStreamDummyData());
 
     const masterPowerStatus = computed(() => _masterPowerStatus.value);
     const intakeAugerStatus = computed(() => _intakeAugerStatus.value);
     const barrelAugerStatus = computed(() => _barrelAugerStatus.value);
     const magnetronArrayPowerStatus = computed(() => _magnetronArrayPowerStatus.value);
     const reactorOverallStatus = computed(() => _reactorOverallStatus.value);
+    const sensorsArrayReadings = computed(() => _sensorsArrayReadings.value);
+    const sensorReadingStreamTemperature = computed(() => _sensorReadingStreamTemperature.value);
+    const sensorReadingStreamPressure = computed(() => _sensorReadingStreamPressure.value);
 
     // Public setters and methods.
 
@@ -100,7 +112,10 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
         reactorOverallStatus,
         intakeAugerStatus,
         barrelAugerStatus,
+        sensorsArrayReadings,
         magnetronArrayPowerStatus,
+        sensorReadingStreamTemperature,
+        sensorReadingStreamPressure,
         startReactor,
         stopReactor,
         killPowerImmediately,
