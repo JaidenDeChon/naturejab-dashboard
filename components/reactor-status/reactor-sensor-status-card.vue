@@ -9,10 +9,10 @@ const props = defineProps<{
 const chooseIcon = computed((): string | undefined => {
     switch (props.sensor.sensorType) {
         case ReactorSensorTypesEnum.TEMPERATURE:
-            return 'material-symbols:thermometer';
+            return '🌡';
         case ReactorSensorTypesEnum.PRESSURE:
             // It's not a pressure icon exactly but close enough.
-            return 'material-symbols:speed';
+            return '☁';
         default:
             return undefined;
     }
@@ -34,11 +34,7 @@ const displayValue = computed((): string => {
     <Card class="p-6">
         <div class="flex justify-between">
             <span class="text-sm truncate">{{ props.sensor.sensorName }}</span>
-            <Icon
-                v-if="chooseIcon"
-                :name="chooseIcon"
-                size="1.2rem"
-            />
+            <span>{{ chooseIcon }}</span>
         </div>
 
         <span class="mt-3 block text-3xl font-bold">{{ displayValue }}</span>

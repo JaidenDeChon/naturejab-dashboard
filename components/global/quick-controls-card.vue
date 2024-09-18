@@ -9,7 +9,7 @@ const reactorStateStore = useReactorStateStore();
 <template>
     <Card class="bg-muted w-full md:w-96">
         <!-- Body. -->
-        <CardContent class="p-3 flex flex-col gap-6">
+        <CardContent class="p-3 flex flex-col gap-6 z-50">
             <!-- Critical controls. -->
             <div class="grid grid-cols-2 grid-rows-4 gap-3">
                 <!-- Emergency stop button. -->

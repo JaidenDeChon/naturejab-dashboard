@@ -6,8 +6,8 @@ const reactorStateStore = useReactorStateStore();
 </script>
 
 <template>
-    <div class="p-4 bg-muted/40 lg:px-32">
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto">
+    <div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             <reactor-sensor-status-card
                 v-for="sensor in reactorStateStore.sensorsArrayReadings"
                 :key="sensor.sensorName"
@@ -15,7 +15,7 @@ const reactorStateStore = useReactorStateStore();
             />
         </div>
 
-        <div class="grid grid-cols-1 gap-6 mt-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 gap-6 mt-6">
             <Card>
                 <card-header>
                     <card-title>Reactor Temperature</card-title>
@@ -42,7 +42,7 @@ const reactorStateStore = useReactorStateStore();
                         <line-chart
                             :data="reactorStateStore.sensorReadingStreamPressure"
                             index="tPlus"
-                            :categories="['Intake pressure', 'Barrell pressure']"
+                            :categories="['Intake pressure', 'Barrel pressure']"
                             class="w-full"
                         />
                         <scroll-bar orientation="horizontal" />

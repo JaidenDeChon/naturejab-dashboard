@@ -19,8 +19,8 @@ const links: { title: string; href: string; icon: string }[] = [
 </script>
 
 <template>
-    <div class="border-b-2 border-border p-3 bg-background/40 backdrop-blur-lg lg:px-32">
-        <div class="max-w-7xl flex justify-between mx-auto">
+    <div class="p-4 bg-background/40 backdrop-blur-lg size-for-all-screens">
+        <div class="flex justify-between">
             <!-- Mobile version of navbar. -->
             <div class="md:hidden">
                 <dialog-drawer-combo>
@@ -58,7 +58,7 @@ const links: { title: string; href: string; icon: string }[] = [
                             </Button>
 
                             <quick-controls-card
-                                class="my-9"
+                                class="my-9 z-50"
                                 @close-main-menu-drawer="mainMenuDrawerStore.closeMainMenuDrawer()"
                             />
                         </div>
