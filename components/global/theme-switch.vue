@@ -4,10 +4,10 @@ const colorMode = useColorMode();
 const buttonContent = computed(() => {
     switch (colorMode.preference) {
         case 'dark':
-            return '🌙';
+            return '☀';
         case 'light':
         default:
-            return '🔆';
+            return '🌙';
     }
 });
 
@@ -32,7 +32,17 @@ function toggleTheme() {
         variant="ghost"
         @click="toggleTheme"
     >
-        {{ buttonContent }}
+        <Icon
+            v-if="colorMode.value === 'dark'"
+            name="ic:round-light-mode"
+            size="1.2rem"
+        />
+        <Icon
+            v-else-if="colorMode.value === 'light'"
+            name="ic:round-dark-mode"
+            size="1.2rem"
+        />
+        <span v-else>Color mode toggle</span>
         <span class="sr-only">Toggle theme</span>
     </Button>
 </template>

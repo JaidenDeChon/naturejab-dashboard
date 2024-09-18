@@ -22,13 +22,13 @@
             <AlertDialogDescription>Activate fire suppression?</AlertDialogDescription>
 
             <!-- Footer. -->
-            <AlertDialogFooter class="flex flex-row-reverse gap-3">
-                <AlertDialogAction class="m-0">
-                    Confirm
-                </AlertDialogAction>
+            <AlertDialogFooter class="flex flex-row gap-3">
                 <AlertDialogCancel class="m-0">
                     Cancel
                 </AlertDialogCancel>
+                <AlertDialogAction class="m-0">
+                    Confirm
+                </AlertDialogAction>
             </AlertDialogFooter>
         </AlertDialogContent>
     </AlertDialog>

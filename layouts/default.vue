@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-    <header class="border-b-2 border-border">
-        <main-menu />
+    <header class="border-b-2 border-border px-6 py-4">
+        <main-menu class="size-for-all-screens" />
     </header>
 
     <!-- eslint-disable-next-line vue/no-multiple-template-root -->

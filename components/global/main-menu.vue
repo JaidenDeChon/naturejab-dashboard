@@ -19,7 +19,7 @@ const links: { title: string; href: string; icon: string }[] = [
 </script>
 
 <template>
-    <div class="p-4 bg-background/40 backdrop-blur-lg size-for-all-screens">
+    <div class="bg-background/40 backdrop-blur-lg">
         <div class="flex justify-between">
             <!-- Mobile version of navbar. -->
             <div class="md:hidden">

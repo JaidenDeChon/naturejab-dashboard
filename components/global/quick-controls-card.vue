@@ -27,11 +27,7 @@ const reactorStateStore = useReactorStateStore();
 
                 <!-- Inert vacuum break button. -->
                 <Button>
-                    <Icon
-                        name="ic:round-lens-blur"
-                        size="1rem"
-                        class="mr-2"
-                    />
+                    <span class="mr-2">☁</span>
                     Inert vacuum break
                 </Button>
 
