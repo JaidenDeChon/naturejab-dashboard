@@ -7,13 +7,9 @@ useAppConfig();
         vaul-drawer-wrapper
         class="h-screen bg-background"
     >
-        <header>
-            <client-only>
-                <main-menu />
-            </client-only>
-        </header>
-
-        <nuxt-page />
+        <nuxt-layout>
+            <nuxt-page />
+        </nuxt-layout>
     </div>
 </template>
 
