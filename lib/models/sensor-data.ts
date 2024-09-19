@@ -3,5 +3,5 @@ import type { ReactorSensorTypesEnum } from '~/lib/constants/reactor-sensor-type
 export interface SensorData {
     sensorName: string;
     sensorType: ReactorSensorTypesEnum;
-    sensorValue: number;
+    sensorReading: number;
 };
