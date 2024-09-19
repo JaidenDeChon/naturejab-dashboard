@@ -32,7 +32,8 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul-vue": "^0.2.0",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vue-sonner": "^1.1.5"
   },
   "devDependencies": {
     "@iconify-json/ic": "^1.2.0",
