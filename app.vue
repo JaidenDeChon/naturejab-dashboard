@@ -1,5 +1,8 @@
 <script setup lang="ts">
 useAppConfig();
+
+const colorMode = useColorMode();
+colorMode.preference = 'system';
 </script>
 
 <template>

@@ -1,16 +1,6 @@
 <script setup lang="ts">
 const colorMode = useColorMode();
 
-const buttonContent = computed(() => {
-    switch (colorMode.preference) {
-        case 'dark':
-            return '☀';
-        case 'light':
-        default:
-            return '🌙';
-    }
-});
-
 function toggleTheme() {
     const currentTheme = colorMode.value;
     switch (currentTheme) {
