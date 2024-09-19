@@ -15,18 +15,22 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
     const _barrelAugerStatus = ref<AugerStatusEnum>(AugerStatusEnum.STOPPED);
     const _magnetronArrayPowerStatus = ref<boolean[]>(getMagnetronDummyData());
     const _reactorOverallStatus = ref<ReactorOverallStatusEnum>(ReactorOverallStatusEnum.NOT_RUNNING);
-    const _sensorsArrayReadings = ref<SensorData[]>(getSensorDummyData());
+    const _sensorsArray = ref<SensorData[]>(getSensorDummyData());
     const _sensorReadingStreamTemperature = ref(getTempSensorStreamDummyData());
     const _sensorReadingStreamPressure = ref(getPressureSensorStreamDummyData());
+    const _reactorTimeLimit = ref<number>(90);
+    const _reactorTimeElapsed = ref<number>(0);
 
     const masterPowerStatus = computed(() => _masterPowerStatus.value);
     const intakeAugerStatus = computed(() => _intakeAugerStatus.value);
     const barrelAugerStatus = computed(() => _barrelAugerStatus.value);
     const magnetronArrayPowerStatus = computed(() => _magnetronArrayPowerStatus.value);
     const reactorOverallStatus = computed(() => _reactorOverallStatus.value);
-    const sensorsArrayReadings = computed(() => _sensorsArrayReadings.value);
+    const sensorsArray = computed(() => _sensorsArray.value);
     const sensorReadingStreamTemperature = computed(() => _sensorReadingStreamTemperature.value);
     const sensorReadingStreamPressure = computed(() => _sensorReadingStreamPressure.value);
+    const reactorTimeLimit = computed(() => _reactorTimeLimit.value);
+    const reactorTimeElapsed = computed(() => _reactorTimeElapsed.value);
 
     // Public setters and methods.
 
@@ -71,6 +75,7 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
         setAllMagnetrons(true);
         intakeAugerForward();
         barrelAugerForward();
+        _reactorTimeElapsed.value = 33;
     }
 
     function stopReactor(): void {
@@ -78,6 +83,7 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
         setAllMagnetrons(false);
         stopIntakeAuger();
         stopBarrelAuger();
+        _reactorTimeElapsed.value = 0;
     }
 
     function killPowerImmediately(): void {
@@ -112,10 +118,12 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
         reactorOverallStatus,
         intakeAugerStatus,
         barrelAugerStatus,
-        sensorsArrayReadings,
+        sensorsArray,
         magnetronArrayPowerStatus,
         sensorReadingStreamTemperature,
         sensorReadingStreamPressure,
+        reactorTimeLimit,
+        reactorTimeElapsed,
         startReactor,
         stopReactor,
         killPowerImmediately,
