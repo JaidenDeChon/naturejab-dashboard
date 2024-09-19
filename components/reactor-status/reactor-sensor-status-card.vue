@@ -4,6 +4,7 @@ import type { SensorData } from '~/lib/models/sensor-data';
 
 const props = defineProps<{
     sensor: SensorData;
+    reactorMasterPower: boolean;
 }>();
 
 const chooseIcon = computed((): string | undefined => {
@@ -11,7 +12,7 @@ const chooseIcon = computed((): string | undefined => {
         case ReactorSensorTypesEnum.TEMPERATURE:
             return '🌡';
         case ReactorSensorTypesEnum.PRESSURE:
-            // It's not a pressure icon exactly but close enough.
+            // It's not a pressure icon exactly but good enough for now.
             return '☁';
         default:
             return undefined;
@@ -19,11 +20,13 @@ const chooseIcon = computed((): string | undefined => {
 });
 
 const displayValue = computed((): string => {
+    if (!props.reactorMasterPower) return '--';
+
     switch (props.sensor.sensorType) {
         case ReactorSensorTypesEnum.TEMPERATURE:
-            return `${props.sensor.sensorValue}°C`;
+            return `${props.sensor.sensorReading}°C`;
         case ReactorSensorTypesEnum.PRESSURE:
-            return `${props.sensor.sensorValue} Pa`;
+            return `${props.sensor.sensorReading} Pa`;
         default:
             return '';
     }
