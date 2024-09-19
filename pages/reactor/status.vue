@@ -1,43 +1,129 @@
 <script setup lang="ts">
 import { useReactorStateStore } from '#imports';
-import FireSuppressionButton from '~/components/reactor-controls/fire-suppression-button.vue';
+import QuickControlsCard from '~/components/global/quick-controls-card.vue';
 import ReactorSensorStatusCard from '~/components/reactor-status/reactor-sensor-status-card.vue';
 import ReactorTimeRemainingCard from '~/components/reactor-status/reactor-time-remaning-card.vue';
 
 const reactorState = useReactorStateStore();
+
+function setMagnetronStatus(index: number) {
+    console.log(index);
+    const magnetronArrayCopy = [...reactorState.magnetronArrayPowerStatus];
+    magnetronArrayCopy[index] = !magnetronArrayCopy[index];
+    reactorState.setMagnetronArrayPowerStatus(magnetronArrayCopy);
+}
 </script>
 
 <template>
-    <!-- eslint-disable-next-line vue/no-multiple-template-root -->
     <div class="flex flex-col gap-6">
         <Card>
             <card-header class="flex flex-col md:flex-row gap-6">
                 <card-title>Control Panel</card-title>
-                <div class="flex flex-col gap-3 md:flex-row md:ml-auto">
-                    <fire-suppression-button />
-                    <Button
-                        variant="outline"
-                        :disabled="reactorState.masterPowerStatus === false"
-                        @click="reactorState.stopReactor"
-                    >
-                        Stop Reactor
-                    </Button>
-                    <Button
-                        :disabled="reactorState.masterPowerStatus === true"
-                        @click="reactorState.startReactor"
-                    >
-                        Start Reactor
-                    </Button>
-                </div>
             </card-header>
-            <card-content />
+            <card-content class="flex flex-col gap-6 md:flex-row">
+                <!-- Quick controls card. -->
+                <quick-controls-card />
+
+                <!-- Magnetron controls. -->
+                <div class="border rounded-lg p-3 flex flex-col justify-between gap-3">
+                    <span>Magnetrons</span>
+                    <div class="flex gap-2">
+                        <Button
+                            v-for="(magnetron, index) in reactorState.magnetronArrayPowerStatus"
+                            :key="index"
+                            :variant="magnetron ? 'default' : 'secondary'"
+                            class="w-full"
+                            @click="setMagnetronStatus(index)"
+                        >
+                            {{ index + 1 }}
+                        </Button>
+                    </div>
+                    <div class="flex gap-2">
+                        <Button
+                            class="w-full"
+                            @click="reactorState.setAllMagnetrons(true, true)"
+                        >
+                            Start all
+                        </Button>
+                        <Button
+                            variant="destructive"
+                            class="w-full"
+                            @click="reactorState.setAllMagnetrons(false, true)"
+                        >
+                            Stop all
+                        </Button>
+                    </div>
+                </div>
+
+                <!-- Intake auger controls. -->
+                <div class="border rounded-lg p-3 flex flex-col justify-between gap-3 flex-1">
+                    <div class="flex justify-between">
+                        <span>Intake Auger</span>
+                        <badge class="capitalize">
+                            {{ reactorState.intakeAugerStatus }}
+                        </badge>
+                    </div>
+                    <div class="flex gap-2">
+                        <Button
+                            class="w-full"
+                        >
+                            Reverse
+                        </Button>
+                        <Button
+                            class="w-full"
+                        >
+                            Forward
+                        </Button>
+                    </div>
+                    <div class="flex gap-2">
+                        <Button
+                            class="w-full"
+                            variant="destructive"
+                        >
+                            Stop
+                        </Button>
+                    </div>
+                </div>
+
+                <!-- Barrel auger controls. -->
+                <div class="border rounded-lg p-3 flex flex-col justify-between gap-3 flex-1">
+                    <div class="flex justify-between">
+                        <span>Barrel Auger</span>
+                        <badge
+                            class="capitalize"
+                        >
+                            {{ reactorState.barrelAugerStatus }}
+                        </badge>
+                    </div>
+                    <div class="flex gap-2">
+                        <Button
+                            class="w-full"
+                        >
+                            Reverse
+                        </Button>
+                        <Button
+                            class="w-full"
+                        >
+                            Forward
+                        </Button>
+                    </div>
+                    <div class="flex gap-2">
+                        <Button
+                            class="w-full"
+                            variant="destructive"
+                        >
+                            Stop
+                        </Button>
+                    </div>
+                </div>
+            </card-content>
         </Card>
 
         <p
             v-if="!reactorState.masterPowerStatus"
             class="text-center p-12"
         >
-            Start the reactor to view data.
+            Start the reactor to view its data.
         </p>
 
         <template v-else>

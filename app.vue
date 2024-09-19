@@ -8,11 +8,16 @@ colorMode.preference = 'system';
 <template>
     <div
         vaul-drawer-wrapper
-        class="h-screen bg-background"
+        class="h-screen bg-muted/70 overflow-y-scroll"
     >
         <nuxt-layout>
             <nuxt-page />
         </nuxt-layout>
+
+        <toaster
+            position="top-right"
+            :toast-options="{ class: 'bg-white', style: { background: 'red' } }"
+        />
     </div>
 </template>
 

@@ -1,3 +1,4 @@
+import { toast } from 'vue-sonner';
 import { StoreNamesEnum } from '~/lib/constants/store-names-enum';
 import { AugerStatusEnum } from '~/lib/constants/auger-status-enum';
 import { ReactorOverallStatusEnum } from '~/lib/constants/reactor-overall-status-enum';
@@ -76,6 +77,7 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
         intakeAugerForward();
         barrelAugerForward();
         _reactorTimeElapsed.value = 33;
+        toast('Reactor started');
     }
 
     function stopReactor(): void {
@@ -84,6 +86,7 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
         stopIntakeAuger();
         stopBarrelAuger();
         _reactorTimeElapsed.value = 0;
+        toast('Reactor stopped');
     }
 
     function killPowerImmediately(): void {
@@ -98,9 +101,7 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
         stopBarrelAuger();
     }
 
-    // Private functions / utility methods.
-
-    function setAllMagnetrons(newValue: boolean): void {
+    function setAllMagnetrons(newValue: boolean, toastResult = false): void {
         // Create a copy of the current array
         const currentArray = [..._magnetronArrayPowerStatus.value];
 
@@ -109,8 +110,10 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
             setTimeout(() => {
                 currentArray[index] = newValue;
                 setMagnetronArrayPowerStatus([...currentArray]);
-            }, index * 100);
+            }, index * 200);
         });
+
+        if (toastResult) toast(`All magnetrons ${newValue ? 'started' : 'stopped '}`);
     }
 
     return {
@@ -126,6 +129,7 @@ export const useReactorStateStore = defineStore(StoreNamesEnum.REACTORE_STATE_ST
         reactorTimeElapsed,
         startReactor,
         stopReactor,
+        setAllMagnetrons,
         killPowerImmediately,
         stopIntakeAuger,
         intakeAugerForward,

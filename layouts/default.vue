@@ -13,7 +13,7 @@ onMounted(() => header.value);
     </header>
 
     <!-- eslint-disable-next-line vue/no-multiple-template-root -->
-    <main class="min-h-full bg-muted/70 p-6 pt-16 z-0 box-border">
+    <main class="min-h-full p-6 pt-16 z-0 box-border">
         <slot />
     </main>
 </template>

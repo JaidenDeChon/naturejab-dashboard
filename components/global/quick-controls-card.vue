@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import FireSuppressionButton from '~/components/reactor-controls/fire-suppression-button.vue';
-import { AugerStatusEnum } from '~/lib/constants/auger-status-enum';
 import { useReactorStateStore } from '#imports';
 
-const reactorStateStore = useReactorStateStore();
+const reactorState = useReactorStateStore();
 </script>
 
 <template>
@@ -11,62 +10,37 @@ const reactorStateStore = useReactorStateStore();
         <!-- Body. -->
         <CardContent class="p-3 flex flex-col gap-6 z-50">
             <!-- Critical controls. -->
-            <div class="grid grid-cols-2 grid-rows-4 gap-3">
+            <div class="grid grid-cols-2 grid-rows-3 gap-3">
                 <!-- Emergency stop button. -->
                 <FireSuppressionButton />
 
                 <!-- Shutdown button. -->
-                <Button class="col-span-2">
+                <Button
+                    class="col-span-2"
+                    @click="reactorState.masterPowerStatus ? reactorState.stopReactor() : reactorState.startReactor()"
+                >
                     <Icon
                         name="ic:round-power-settings-new"
                         size="1rem"
                         class="mr-2"
                     />
-                    Shutdown
+                    {{ reactorState.masterPowerStatus ? 'Stop Reactor' : 'Start Reactor' }}
                 </Button>
 
                 <!-- Inert vacuum break button. -->
                 <Button>
                     <span class="mr-2">☁</span>
-                    Inert vacuum break
+                    Break vacuum
                 </Button>
 
                 <!-- Kill magnetrons button. -->
-                <Button>
+                <Button @click="reactorState.setAllMagnetrons(false)">
                     <Icon
                         name="ic:outline-electric-bolt"
                         size="1rem"
                         class="mr-2"
                     />
                     Kill magnetrons
-                </Button>
-
-                <!-- Barrel auger toggle. -->
-                <Button
-                    class="gap-3"
-                    @click="reactorStateStore.barrelAugerStatus === AugerStatusEnum.FORWARD ? reactorStateStore.stopBarrelAuger() : reactorStateStore.barrelAugerForward()"
-                >
-                    Barrel:
-                    <Badge
-                        :variant="reactorStateStore.barrelAugerStatus === AugerStatusEnum.FORWARD ? 'secondary' : 'destructive'"
-                        class="capitalize"
-                    >
-                        {{ reactorStateStore.barrelAugerStatus }}
-                    </Badge>
-                </Button>
-
-                <!-- Intake auger dropdown. -->
-                <Button
-                    class="gap-3"
-                    @click="reactorStateStore.intakeAugerStatus === AugerStatusEnum.FORWARD ? reactorStateStore.stopIntakeAuger() : reactorStateStore.intakeAugerForward()"
-                >
-                    Intake:
-                    <Badge
-                        :variant="reactorStateStore.intakeAugerStatus === AugerStatusEnum.FORWARD ? 'secondary' : 'destructive'"
-                        class="capitalize"
-                    >
-                        {{ reactorStateStore.intakeAugerStatus }}
-                    </Badge>
                 </Button>
             </div>
         </CardContent>
