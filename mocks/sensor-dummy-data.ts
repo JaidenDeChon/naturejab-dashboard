@@ -4,12 +4,12 @@ import type { SensorData } from '~/lib/models/sensor-data';
 export function getSensorDummyData(): SensorData[] {
     return [
         // Temperature sensors.
-        { sensorName: 'Barrel temp (front)', sensorType: ReactorSensorTypesEnum.TEMPERATURE, sensorValue: 528 },
-        { sensorName: 'Barrel temp (rear)', sensorType: ReactorSensorTypesEnum.TEMPERATURE, sensorValue: 417 },
-        { sensorName: 'Condenser temp', sensorType: ReactorSensorTypesEnum.TEMPERATURE, sensorValue: 741 },
+        { sensorName: 'Barrel temp (front)', sensorType: ReactorSensorTypesEnum.TEMPERATURE, sensorReading: 280 },
+        { sensorName: 'Barrel temp (rear)', sensorType: ReactorSensorTypesEnum.TEMPERATURE, sensorReading: 278 },
+        { sensorName: 'Condenser temp', sensorType: ReactorSensorTypesEnum.TEMPERATURE, sensorReading: 124 },
         // Pressure sensors.
-        { sensorName: 'Intake pressure', sensorType: ReactorSensorTypesEnum.PRESSURE, sensorValue: 3.14 },
-        { sensorName: 'Barrel pressure', sensorType: ReactorSensorTypesEnum.PRESSURE, sensorValue: 1.59 },
+        { sensorName: 'Intake pressure', sensorType: ReactorSensorTypesEnum.PRESSURE, sensorReading: 50 },
+        { sensorName: 'Barrel pressure', sensorType: ReactorSensorTypesEnum.PRESSURE, sensorReading: 80 },
     ];
 }
 
