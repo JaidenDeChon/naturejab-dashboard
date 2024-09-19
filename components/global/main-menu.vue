@@ -19,7 +19,7 @@ const links: { title: string; href: string; icon: string }[] = [
 </script>
 
 <template>
-    <div class="bg-background/40 backdrop-blur-lg">
+    <div>
         <div class="flex justify-between">
             <!-- Mobile version of navbar. -->
             <div class="md:hidden">

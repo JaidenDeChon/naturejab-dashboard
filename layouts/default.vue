@@ -1,12 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const header = ref();
+
+onMounted(() => header.value);
+</script>
 
 <template>
-    <header class="border-b-2 border-border px-6 py-4">
+    <header
+        ref="header"
+        class="border-b-2 border-border px-6 h-16 content-center fixed w-full bg-background/60 backdrop-blur-lg z-50"
+    >
         <main-menu class="size-for-all-screens" />
     </header>
 
     <!-- eslint-disable-next-line vue/no-multiple-template-root -->
-    <main class="bg-muted/40 p-6">
+    <main class="min-h-full bg-muted/70 p-6 pt-16 z-0 box-border">
         <slot />
     </main>
 </template>
