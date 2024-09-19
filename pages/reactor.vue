@@ -4,14 +4,14 @@ import { RoutePathsEnum } from '~/lib/constants/route-paths.enum';
 </script>
 
 <template>
-    <div class="flex flex-col gap-6 size-for-all-screens">
+    <div class="flex flex-col gap-6 mt-6 size-for-all-screens">
         <tabs :default-value="$route.path">
             <tabs-list>
                 <tabs-trigger
                     :value="'/' + RoutePathsEnum.REACTOR_STATUS"
                     @click.stop="$router.replace({ name: RouteNamesEnum.REACTOR_STATUS })"
                 >
-                    Status
+                    This run
                 </tabs-trigger>
                 <tabs-trigger
                     :value="'/' + RoutePathsEnum.REACTOR_CONTROLS"
