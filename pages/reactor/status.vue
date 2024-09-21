@@ -38,11 +38,13 @@ const reactorState = useReactorStateStore();
                     </div>
                     <div class="flex gap-3">
                         <Button
+                            variant="outline"
                             class="w-full"
                         >
                             Reverse
                         </Button>
                         <Button
+                            variant="outline"
                             class="w-full"
                         >
                             Forward
@@ -70,11 +72,13 @@ const reactorState = useReactorStateStore();
                     </div>
                     <div class="flex gap-3">
                         <Button
+                            variant="outline"
                             class="w-full"
                         >
                             Reverse
                         </Button>
                         <Button
+                            variant="outline"
                             class="w-full"
                         >
                             Forward
@@ -100,7 +104,7 @@ const reactorState = useReactorStateStore();
         </p>
 
         <template v-else>
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3 mt-20">
                 <reactor-time-remaining-card
                     :total-time="reactorState.reactorTimeLimit"
                     :elapsed-time="reactorState.reactorTimeElapsed"

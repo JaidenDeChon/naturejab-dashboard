@@ -17,7 +17,7 @@ const togglePlasticType = (type: string, value: boolean) => {
 
 <template>
     <card>
-        <card-content class="p-6 flex flex-col gap-6">
+        <card-content class="p-6 flex flex-col gap-6 md:flex-row md:items-end">
             <!-- Runtime field. -->
             <number-field
                 id="configure-time-limit"
@@ -79,7 +79,9 @@ const togglePlasticType = (type: string, value: boolean) => {
                 </dialog-drawer-combo>
             </div>
 
-            <Button>Start reactor</Button>
+            <Button class="ml-auto">
+                Start run
+            </Button>
         </card-content>
     </card>
 </template>
