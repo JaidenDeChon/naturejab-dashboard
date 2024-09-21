@@ -23,7 +23,7 @@ const links: { title: string; href: string; icon: string }[] = [
         <div class="flex justify-between">
             <!-- Mobile version of navbar. -->
             <div class="md:hidden">
-                <dialog-drawer-combo>
+                <dialog-drawer-combo v-model="mainMenuDrawerStore.isOpen">
                     <template #trigger>
                         <Button
                             variant="ghost"

@@ -8,7 +8,7 @@ colorMode.preference = 'system';
 <template>
     <div
         vaul-drawer-wrapper
-        class="h-screen bg-muted/70 overflow-y-scroll"
+        class="h-screen bg-muted overflow-y-scroll"
     >
         <nuxt-layout>
             <nuxt-page />

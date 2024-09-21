@@ -13,11 +13,9 @@ import {
     DrawerDescription,
     DrawerContent,
 } from '../ui';
-import { useMainMenuDrawerStore } from '~/stores/main-menu-drawer-state';
 import { useMediaQuery } from '#imports';
 
-const mainMenuDrawerStore = useMainMenuDrawerStore();
-
+// Use defineModel to bind the open state
 const props = withDefaults(
     defineProps<{
         title?: string;
@@ -28,6 +26,9 @@ const props = withDefaults(
         closeOnRouteChange: true,
     },
 );
+
+// Define the model for open state control
+const open = defineModel<boolean>();
 
 const isDesktop = useMediaQuery('(min-width:  768px)');
 
@@ -48,7 +49,7 @@ const defaultDrawerClass = computed(() => {
     <client-only>
         <component
             :is="isDesktop ? Dialog : Drawer"
-            v-model:open="mainMenuDrawerStore.isOpen"
+            v-model:open="open"
         >
             <component
                 :is="isDesktop ? DialogTrigger : DrawerTrigger"
